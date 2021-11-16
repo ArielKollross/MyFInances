@@ -1,13 +1,18 @@
-FROM node
 
-WORKDIR /usr/app
+FROM node:14 AS builder
 
-COPY package.json ./
+# Create app directory
+WORKDIR /app
 
-RUN npm install
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json yarn.lock ./
+COPY prisma ./prisma/
+
+# Install app dependencies
+RUN yarn
 
 COPY . .
 
-EXPOSE 3000
+RUN yarn build
 
-CMD ["npm", "rum", "start:dev"]
+CMD [ "yarn", "start:dev" ]

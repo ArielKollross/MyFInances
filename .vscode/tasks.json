@@ -1,0 +1,27 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker shell",
+      "type": "shell",
+      "command": "docker exec -it nest-api /bin/bash"
+    },
+    {
+      "label": "docker up",
+      "type": "shell",
+      "command": "docker-compose start"
+    },
+    {
+      "label": "docker down",
+      "type": "shell",
+      "command": "docker-compose stop"
+    },
+    {
+      "label": "docker logs",
+      "type": "shell",
+      "command": "docker logs nest-api -f"
+    }
+  ]
+}
